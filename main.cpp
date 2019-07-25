@@ -67,7 +67,21 @@ int main()
    // fntor2 = fntor1; //will give compile error since assignment constructor declared as delete
     Functor funtor3(fntor2);
 
+    //=============================================//
+    //          Auto                               //
+    //=============================================//
 
+    auto i = 1; //integer
+    auto d = 8.0; // double
+    auto str = "Ilavarasan"; // string
+    
+    cout << i <<"\t"<<d <<"\t"<<str<<endl;
+    
+    auto list = {1,2,3,4,5};
+    //list.pop();
+    cout << typeid(list).name() <<endl;
+    for(auto num:list)
+        cout << num <<"\t";
     return 0;
 
 }
