@@ -19,9 +19,13 @@ private:
     {
         cout<< welcomeTxt+name<<endl;
     }
+
 };
 
-
+void construct(string msg, Functor fntr)
+{
+    fntr(msg);
+}
 int main()
 {
     cout << "Hello World!" << endl;
@@ -30,5 +34,7 @@ int main()
 
     Functor fntor1("Hello");
     fntor1(" Ilavarasan");
+
+    construct("ilavarasan", Functor(" Wow"));
     return 0;
 }
