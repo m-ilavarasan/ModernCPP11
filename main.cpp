@@ -1,11 +1,14 @@
 /*C++ 11 Concepts are discussed here*/
 
-
-
 #include <iostream>
 #include<string>
 #include<typeinfo>
 #include<algorithm>
+#include<initializer_list>
+#include<map>
+#include<list>
+#include<vector>
+
 using namespace std;
 
 class Functor{
@@ -138,8 +141,8 @@ int main()
     capAllValEditable();
     
     
-    auto arr ( {1,2,3,4,5});
-    
+    auto arr ={1,2,3,4,5};
+
     int total = 0;
     for_each(arr.begin(), arr.end(), [&total](int x)
     {
@@ -147,6 +150,31 @@ int main()
     });
     cout<<" LAmbda in STL===>";
     cout <<" total:" << total <<endl;
+
+    //==============================================//
+    //          Initializer_list                    //
+    //==============================================//
+
+
+    int arrIni[] = {1, 2,3,4,5}; //Array initialization
+    cout <<" Array Values after initializer list=>";
+    for(auto arrItr:arrIni) cout<<arrItr;
+    cout <<endl;
+
+    vector<int> vec = {1,3,4,5,7,8}; //Vector Initialization
+    cout <<" Vector valurs after initializer list=>";
+    for(auto vecItr:arrIni) cout<<vecItr;
+    cout<<endl;
+
+    map<string, int> inimap = {
+        {"Ila", 0},
+        {"Ilavaa", 2}
+    };
     
+    cout <<" Map values after initializer list=>";
+    for(auto mapItr:inimap)
+    {
+        cout <<mapItr.first <<":" << mapItr.second <<endl;
+    }
     return 0;
 }
