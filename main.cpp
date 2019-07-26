@@ -4,7 +4,8 @@
 
 #include <iostream>
 #include<string>
-
+#include<typeinfo>
+#include<algorithm>
 using namespace std;
 
 class Functor{
@@ -67,6 +68,7 @@ int main()
    // fntor2 = fntor1; //will give compile error since assignment constructor declared as delete
     Functor funtor3(fntor2);
 
+
     //=============================================//
     //          Auto                               //
     //=============================================//
@@ -82,7 +84,69 @@ int main()
     cout << typeid(list).name() <<endl;
     for(auto num:list)
         cout << num <<"\t";
-    cout <<endl;
+    
+    cout<<endl;
+    
+    //==============================================//
+    //          Lambda                              //
+    //==============================================//
+    
+    auto lmbd = [](){
+        cout <<" This is empty capture clause & no param lambda function"<<endl;
+    };
+    
+    lmbd();
+    
+    auto ParamLamb = [](int a)
+    {
+       return a*a;
+    };
+    cout << " Input param to Lamda:"<<ParamLamb(5) <<endl;
+    
+    auto mulParam = [](int a, int b){
+        return a+b;
+    };
+    
+    cout <<" Multi param Lamda:" << mulParam(10,5) <<endl;
+    
+    auto s = "ilavarasan";
+    
+    auto capValLamb = [s](string str) // passing value as read only
+    {
+        cout<<" Lambda Capture as Value:";
+        cout << str+ " " + s <<endl;
+    };
+    capValLamb("Hi") ;
+    
+    auto capRefLamb = [&s](string str){ // passing value as reference. Values can be editable
+        s = " Ilavarasan Manickam";
+        cout<<" Lambda Capture as Value:";
+        cout << str+ " " + s <<endl;
+    };
+    capRefLamb("Hello")  ;
+    
+    auto capAllValReadable = [=]()
+    {
+      cout<<" Lambda function which will read all the variable declared outside: "  <<s<<endl;
+    };
+    capAllValReadable();
+    
+    auto capAllValEditable = [&](){
+        s = "Ilavarasan M";
+        cout <<" Lambda function which can edit all the variable declared outside: "  <<s<<endl;
+    };
+    capAllValEditable();
+    
+    
+    auto arr ( {1,2,3,4,5});
+    
+    int total = 0;
+    for_each(arr.begin(), arr.end(), [&total](int x)
+    {
+        total +=x;
+    });
+    cout<<" LAmbda in STL===>";
+    cout <<" total:" << total <<endl;
+    
     return 0;
-
 }
