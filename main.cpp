@@ -37,6 +37,35 @@ private:
     }
 };
 
+// Stongly typed enums
+
+//enum Color{
+//    BLACK=0,
+//    RED,
+//    BLUE,
+//    GREEN
+//};
+
+//enum  YMCK{
+//    YELLOW = 0,
+//    MEGANTA,
+//    CYAN,
+//    BLACK // Gives compilation error
+//};
+
+enum class Color{   //Storngly typed enums
+    BLACK=0,
+    RED,
+    BLUE,
+    GREEN
+};
+
+enum  class YMCK{    //Storngly typed enums
+    YELLOW = 0,
+    MEGANTA,
+    CYAN,
+    BLACK // Works because of stongly typed
+};
 
 
 void construct(string msg, Functor fntr)
@@ -152,6 +181,14 @@ int main()
     cout <<" total:" << total <<endl;
 
     //==============================================//
+    //         decltype                              //
+    //==============================================//
+
+    decltype (5)x; //typeid(x).name will give as interger
+    decltype(x)y;
+    cout <<x << y <<endl;
+
+    //==============================================//
     //          Initializer_list                    //
     //==============================================//
 
@@ -176,5 +213,9 @@ int main()
     {
         cout <<mapItr.first <<":" << mapItr.second <<endl;
     }
+
+    //Stongly typed enums
+    cout <<static_cast<int>(Color::BLACK)<<endl; // output:0
+    cout << static_cast<int>(YMCK::BLACK)<<endl; //output:3
     return 0;
 }
