@@ -82,6 +82,7 @@ int main()
     cout << typeid(list).name() <<endl;
     for(auto num:list)
         cout << num <<"\t";
+    cout <<endl;
     return 0;
 
 }
