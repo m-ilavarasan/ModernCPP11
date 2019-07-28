@@ -79,18 +79,37 @@ void construct(string msg, Functor fntr)
 //          final                              //
 //==============================================//
 
-
+//class declared with Final
 class A final
 {
 public:
     A(){
         cout<<" This is base class A with final keyword"<<endl;
     }
+
 };
 //class B:public A // Wont work. Since base class declared as final
 //{
 
 //};
+
+
+//functions declared with Final
+
+class test{
+public:
+
+   virtual void TestFn() final; //only virtual can be marked as final
+    virtual void display();
+    virtual ~test();
+};
+
+class testDerived :public test{
+public:
+   // void TestFn(); // Wont compile since it is declared wth final in parent
+    void display();
+    ~testDerived();
+};
 
 //==============================================//
 //          constexpr                           //
