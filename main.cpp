@@ -75,6 +75,35 @@ void construct(string msg, Functor fntr)
     fntr(msg);
 
 }
+//==============================================//
+//          final                              //
+//==============================================//
+
+
+class A final
+{
+public:
+    A(){
+        cout<<" This is base class A with final keyword"<<endl;
+    }
+};
+//class B:public A // Wont work. Since base class declared as final
+//{
+
+//};
+
+//==============================================//
+//          constexpr                           //
+//==============================================//
+
+constexpr int add(int a, int b)
+{
+    //int c = a+b;
+   // return c;  //will not work
+
+    //if(a == 5) return a;  // wont work. multiple return is not supported
+    return (a+b);
+}
 
 int main()
 
@@ -217,5 +246,21 @@ int main()
     //Stongly typed enums
     cout <<static_cast<int>(Color::BLACK)<<endl; // output:0
     cout << static_cast<int>(YMCK::BLACK)<<endl; //output:3
+
+    //nullPtr
+
+    //int a = nullptr;  // Gives compile error since its type of nullptr_t and cant convert to integer type
+    int b = NULL; // Works
+
+    int *a = nullptr; //works
+
+    //=============================constexpr usage=============
+
+    const int sum = add(5,10);
+    cout << " Constexpr sum:" << sum <<endl;
+
+    int addi = add(10,20);
+    cout << "constexpr with out const :" << addi <<endl;
+
     return 0;
 }
