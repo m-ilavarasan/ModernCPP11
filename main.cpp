@@ -280,6 +280,40 @@ int main()
 
     int addi = add(10,20);
     cout << "constexpr with out const :" << addi <<endl;
-
+    
+    
+    
+    //==============================================//
+    //          unique_ptr                          //
+    //==============================================//
+    
+    unique_ptr<int> uniPtr(new int(10));
+    unique_ptr<int> up1 = unique_ptr<int>(new int());
+    
+    up1 = move(uniPtr);
+    cout <<" The up1 contains: " << *up1 <<endl;
+    
+    cout <<" The unique ptr get Val :" << *(up1.get()) <<endl;
+    up1.reset();
+    if(up1 != nullptr)
+    cout <<" up1 after reset :" << *up1 <<endl;
+    else
+    cout <<" Up1 gets released so it might be null\n";
+    
+    //using raw pointer
+    
+    int* raw = new int(5);
+    
+    unique_ptr<int>up2(raw);
+    cout <<" the value of up2 now after creating using raw pointer  :" << *up2 << endl;
+    
+    up2.reset();
+    cout <<" the value of raw pointer now is:" << *raw <<endl; // it should be junk value 
+    
+    //create raw pointer using the unique pointer
+    
+    unique_ptr<int> up3 (new int(15));
+    int* rawPtr = up3.get();
+    cout <<" raw poniter from unique is :" << *rawPtr <<endl;
     return 0;
 }
