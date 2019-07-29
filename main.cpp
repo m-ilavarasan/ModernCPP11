@@ -300,7 +300,7 @@ int main()
 
     int addi = add(10,20);
     cout << "constexpr with out const :" << addi <<endl;
-<<<<<<< HEAD
+
 
     //==============================================//
     //          rValue reference                    //
@@ -346,9 +346,9 @@ int main()
     unique_ptr<int> up3 (new int(15));
     int* rawPtr = up3.get();
     cout <<" raw poniter from unique is :" << *rawPtr <<endl;
-=======
-    
-   
->>>>>>> 264f68060097960ba4ee0f8832aa8df1e81bf05c
+
+    //==============================================//
+    //         shared_ptr                          //
+    //==============================================//
     return 0;
 }
