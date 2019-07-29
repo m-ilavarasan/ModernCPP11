@@ -350,5 +350,23 @@ int main()
     //==============================================//
     //         shared_ptr                          //
     //==============================================//
+
+    shared_ptr<int>sp1 = shared_ptr<int>(new int(5));
+    shared_ptr<int>sp2 = make_shared<int>(10);
+    shared_ptr<int>sp3 = sp1;
+
+    cout << " Reference count :" << sp1.use_count()<<endl;
+    cout << " Is Share_ptr unique:"<< sp2.unique() <<endl;
+    sp1.reset();
+    cout << " Reference count Now:" << sp1.use_count()<<endl;
+    int *ptr1 = sp1.get();
+    cout <<" raw pointer Noew :" << *ptr1 <<endl;
+
+    //==============================================//
+    //         weak_ptr                             //
+    //==============================================//
+
+    weak_ptr<int>wekPtr = sp2;
+    cout << " weak pointer usage:" << wekPtr.expired() <<endl;
     return 0;
 }
