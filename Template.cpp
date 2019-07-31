@@ -15,6 +15,14 @@ template<> const char* Max<const char*>(const char* str, const char* str1)
 {
     return strcmp(str, str1)>0?str:str1;
 }
+
+//Non-type argument template
+
+template<int size> // Should be constant 
+void Print()
+{
+    cout << " The value of size is :" << size <<endl;
+}
 int main()
 {
     printf("Hello World\n");
@@ -33,6 +41,6 @@ int main()
     const char* s1 = {"A"};
       cout <<" String compare Now: " << Max(s,s1) <<endl;
   
-    
+    Print<3>(); // it should be constant
     return 0;
 }
