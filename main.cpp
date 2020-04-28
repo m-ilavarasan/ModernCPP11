@@ -368,5 +368,11 @@ int main()
 
     weak_ptr<int>wekPtr = sp2;
     cout << " weak pointer usage:" << wekPtr.expired() <<endl;
+    //==============================================//
+    //         Vardiac Templates                     //
+    //==============================================//
+    
+    //Yet to Start
+    
     return 0;
 }
